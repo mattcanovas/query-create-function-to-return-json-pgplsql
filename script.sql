@@ -1,0 +1,8 @@
+CREATE OR REPLACE FUNCTION get_json()
+RETURNS TABLE (response json) LANGUAGE plpgsql AS $$
+  DECLARE 
+  BEGIN 
+  RETURN QUERY
+  SELECT JSON_AGG(a) from (SELECT * FROM TB_EXEMPLO) AS a
+  END;
+$$;
